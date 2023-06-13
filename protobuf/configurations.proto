@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package protobuf;
+
+message Configurations {
+  repeated Configuration configurations = 1;
+
+  message Configuration {
+    uint64 id = 1;
+    string name = 2;
+    ConfigType type = 3;
+    ConfigContext context = 4;
+  }
+
+  enum ConfigType {
+    PLAIN = 0;
+    CUSTOM = 1;
+  }
+
+  enum ConfigContext {
+    GLOBAL = 0;
+    USER = 1;
+    PROJECT = 2;
+  }
+}
