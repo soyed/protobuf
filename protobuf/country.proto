@@ -1,0 +1,15 @@
+syntax = "proto3";
+import  "google/protobuf/wrappers.proto";
+
+package protobuf;
+
+
+message Country {
+  int64 id = 1;
+  string name = 2;
+  google.protobuf.StringValue country_code = 3;
+  string currency = 4;
+  string capital = 5;
+  google.protobuf.BoolValue independent = 6;
+  google.protobuf.Int64Value established = 7;
+}
