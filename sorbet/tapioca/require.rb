@@ -1,4 +1,8 @@
-# typed: true
+# typed: strict
 # frozen_string_literal: true
 
-# Add your extra requires here (`bin/tapioca require` can be used to bootstrap this list)
+require "debug"
+require "google/protobuf"
+require "google/protobuf/well_known_types"
+require "google/protobuf/wrappers_pb"
+require "sorbet-runtime"

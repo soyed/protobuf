@@ -63,6 +63,28 @@ class Google::Protobuf::AbstractMessage
   end
 end
 
+class Google::Protobuf::Any < ::Google::Protobuf::AbstractMessage
+  # source://google-protobuf//lib/google/protobuf/well_known_types.rb#69
+  def is(klass); end
+
+  # source://google-protobuf//lib/google/protobuf/well_known_types.rb#48
+  def pack(msg, type_url_prefix = T.unsafe(nil)); end
+
+  # source://google-protobuf//lib/google/protobuf/well_known_types.rb#65
+  def type_name; end
+
+  # source://google-protobuf//lib/google/protobuf/well_known_types.rb#57
+  def unpack(klass); end
+
+  class << self
+    # source://google-protobuf//lib/google/protobuf/well_known_types.rb#42
+    def pack(msg, type_url_prefix = T.unsafe(nil)); end
+  end
+end
+
+class Google::Protobuf::BoolValue < ::Google::Protobuf::AbstractMessage; end
+class Google::Protobuf::BytesValue < ::Google::Protobuf::AbstractMessage; end
+
 class Google::Protobuf::Descriptor
   include ::Enumerable
 
@@ -96,6 +118,12 @@ end
 class Google::Protobuf::DescriptorProto < ::Google::Protobuf::AbstractMessage; end
 class Google::Protobuf::DescriptorProto::ExtensionRange < ::Google::Protobuf::AbstractMessage; end
 class Google::Protobuf::DescriptorProto::ReservedRange < ::Google::Protobuf::AbstractMessage; end
+class Google::Protobuf::DoubleValue < ::Google::Protobuf::AbstractMessage; end
+
+class Google::Protobuf::Duration < ::Google::Protobuf::AbstractMessage
+  # source://google-protobuf//lib/google/protobuf/well_known_types.rb#105
+  def to_f; end
+end
 
 class Google::Protobuf::EnumDescriptor
   include ::Enumerable
@@ -234,6 +262,7 @@ Google::Protobuf::FieldDescriptorProto::Type::TYPE_UINT32 = T.let(T.unsafe(nil),
 # source://google-protobuf//lib/google/protobuf/descriptor_pb.rb#45
 Google::Protobuf::FieldDescriptorProto::Type::TYPE_UINT64 = T.let(T.unsafe(nil), Integer)
 
+class Google::Protobuf::FieldMask < ::Google::Protobuf::AbstractMessage; end
 class Google::Protobuf::FieldOptions < ::Google::Protobuf::AbstractMessage; end
 
 module Google::Protobuf::FieldOptions::CType
@@ -353,6 +382,7 @@ Google::Protobuf::FileOptions::OptimizeMode::LITE_RUNTIME = T.let(T.unsafe(nil),
 # source://google-protobuf//lib/google/protobuf/descriptor_pb.rb#54
 Google::Protobuf::FileOptions::OptimizeMode::SPEED = T.let(T.unsafe(nil), Integer)
 
+class Google::Protobuf::FloatValue < ::Google::Protobuf::AbstractMessage; end
 class Google::Protobuf::GeneratedCodeInfo < ::Google::Protobuf::AbstractMessage; end
 class Google::Protobuf::GeneratedCodeInfo::Annotation < ::Google::Protobuf::AbstractMessage; end
 
@@ -372,6 +402,9 @@ Google::Protobuf::GeneratedCodeInfo::Annotation::Semantic::NONE = T.let(T.unsafe
 
 # source://google-protobuf//lib/google/protobuf/descriptor_pb.rb#73
 Google::Protobuf::GeneratedCodeInfo::Annotation::Semantic::SET = T.let(T.unsafe(nil), Integer)
+
+class Google::Protobuf::Int32Value < ::Google::Protobuf::AbstractMessage; end
+class Google::Protobuf::Int64Value < ::Google::Protobuf::AbstractMessage; end
 
 # source://google-protobuf//lib/google/protobuf/descriptor_dsl.rb#16
 module Google::Protobuf::Internal; end
@@ -578,6 +611,33 @@ class Google::Protobuf::Internal::OneofBuilder
   def optional(name, type, number, type_class = T.unsafe(nil), options = T.unsafe(nil)); end
 end
 
+class Google::Protobuf::ListValue < ::Google::Protobuf::AbstractMessage
+  include ::Enumerable
+
+  # source://google-protobuf//lib/google/protobuf/well_known_types.rb#219
+  def <<(value); end
+
+  # source://google-protobuf//lib/google/protobuf/well_known_types.rb#211
+  def [](index); end
+
+  # source://google-protobuf//lib/google/protobuf/well_known_types.rb#215
+  def []=(index, value); end
+
+  # source://google-protobuf//lib/google/protobuf/well_known_types.rb#225
+  def each; end
+
+  # source://google-protobuf//lib/google/protobuf/well_known_types.rb#207
+  def length; end
+
+  # source://google-protobuf//lib/google/protobuf/well_known_types.rb#229
+  def to_a; end
+
+  class << self
+    # source://google-protobuf//lib/google/protobuf/well_known_types.rb#233
+    def from_a(arr); end
+  end
+end
+
 class Google::Protobuf::Map
   include ::Enumerable
 
@@ -644,6 +704,17 @@ Google::Protobuf::MethodOptions::IdempotencyLevel::IDEMPOTENT = T.let(T.unsafe(n
 
 # source://google-protobuf//lib/google/protobuf/descriptor_pb.rb#66
 Google::Protobuf::MethodOptions::IdempotencyLevel::NO_SIDE_EFFECTS = T.let(T.unsafe(nil), Integer)
+
+module Google::Protobuf::NullValue
+  class << self
+    def descriptor; end
+    def lookup(_arg0); end
+    def resolve(_arg0); end
+  end
+end
+
+# source://google-protobuf//lib/google/protobuf/struct_pb.rb#39
+Google::Protobuf::NullValue::NULL_VALUE = T.let(T.unsafe(nil), Integer)
 
 class Google::Protobuf::OneofDescriptor
   include ::Enumerable
@@ -931,9 +1002,67 @@ class Google::Protobuf::ServiceDescriptorProto < ::Google::Protobuf::AbstractMes
 class Google::Protobuf::ServiceOptions < ::Google::Protobuf::AbstractMessage; end
 class Google::Protobuf::SourceCodeInfo < ::Google::Protobuf::AbstractMessage; end
 class Google::Protobuf::SourceCodeInfo::Location < ::Google::Protobuf::AbstractMessage; end
+class Google::Protobuf::StringValue < ::Google::Protobuf::AbstractMessage; end
+
+class Google::Protobuf::Struct < ::Google::Protobuf::AbstractMessage
+  # source://google-protobuf//lib/google/protobuf/well_known_types.rb#173
+  def [](key); end
+
+  # source://google-protobuf//lib/google/protobuf/well_known_types.rb#179
+  def []=(key, value); end
+
+  # source://google-protobuf//lib/google/protobuf/well_known_types.rb#199
+  def has_key?(key); end
+
+  # source://google-protobuf//lib/google/protobuf/well_known_types.rb#187
+  def to_h; end
+
+  class << self
+    # source://google-protobuf//lib/google/protobuf/well_known_types.rb#193
+    def from_hash(hash); end
+  end
+end
+
+class Google::Protobuf::Timestamp < ::Google::Protobuf::AbstractMessage
+  # source://google-protobuf//lib/google/protobuf/well_known_types.rb#89
+  def from_time(time); end
+
+  # source://google-protobuf//lib/google/protobuf/well_known_types.rb#99
+  def to_f; end
+
+  # source://google-protobuf//lib/google/protobuf/well_known_types.rb#95
+  def to_i; end
+
+  # source://google-protobuf//lib/google/protobuf/well_known_types.rb#80
+  def to_time; end
+
+  class << self
+    # source://google-protobuf//lib/google/protobuf/well_known_types.rb#85
+    def from_time(time); end
+  end
+end
 
 # source://google-protobuf//lib/google/protobuf.rb#40
 class Google::Protobuf::TypeError < ::TypeError; end
 
+class Google::Protobuf::UInt32Value < ::Google::Protobuf::AbstractMessage; end
+class Google::Protobuf::UInt64Value < ::Google::Protobuf::AbstractMessage; end
+
+# source://google-protobuf//lib/google/protobuf/well_known_types.rb#110
+class Google::Protobuf::UnexpectedStructType < ::Google::Protobuf::Error; end
+
 class Google::Protobuf::UninterpretedOption < ::Google::Protobuf::AbstractMessage; end
 class Google::Protobuf::UninterpretedOption::NamePart < ::Google::Protobuf::AbstractMessage; end
+
+class Google::Protobuf::Value < ::Google::Protobuf::AbstractMessage
+  # source://google-protobuf//lib/google/protobuf/well_known_types.rb#144
+  def from_ruby(value); end
+
+  # source://google-protobuf//lib/google/protobuf/well_known_types.rb#113
+  def to_ruby(recursive = T.unsafe(nil)); end
+
+  class << self
+    # source://google-protobuf//lib/google/protobuf/well_known_types.rb#140
+    def from_ruby(value); end
+  end
+end
