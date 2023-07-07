@@ -68,7 +68,7 @@ country2 = Protobuf::Country.new(
   capital: "Washington",
   independent: Google::Protobuf::BoolValue.new(value: true),
   established: Google::Protobuf::Int64Value.new(value: 1980),
-  country_code: nil
+  country_code: Google::Protobuf::StringValue.new(value: nil)
 )
 encoded2 = Protobuf::Country.encode(country2)
 decoded2 = Protobuf::Country.decode(encoded2)

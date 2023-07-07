@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package protobuf;
+
+message Survey {
+  Question question = 1;
+  Answer answer = 2;
+
+  enum Answer {
+    ANSWER_A = 0;
+    ANSWER_B = 1;
+    ANSWER_C = 2;
+  }
+
+  enum Question {
+    QUESTION_A = 0;
+    QUESTION_B = 1;
+    QUESTION_C = 2;
+  }
+}
+
