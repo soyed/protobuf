@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package protobuf;
+
+
+message Task {
+  optional int64 id = 1;
+  optional string name = 2;
+  optional bool completed = 6;
+}
