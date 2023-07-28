@@ -15,10 +15,35 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :capital, :string, 5
       optional :independent, :message, 6, "google.protobuf.BoolValue"
       optional :established, :message, 7, "google.protobuf.Int64Value"
+      optional :continent, :message, 8, "protobuf.Country.Continent"
+      proto3_optional :test_enum, :enum, 9, "protobuf.Country.TestEnum"
+    end
+    add_message "protobuf.Country.Continent" do
+      optional :id, :int64, 1
+      optional :name, :enum, 2, "protobuf.Country.Continent.ContinentName"
+    end
+    add_enum "protobuf.Country.Continent.ContinentName" do
+      value :UNDEFINED, 0
+      value :ASIA, 1
+      value :EUROPE, 2
+      value :AFRICA, 3
+      value :NORTH_AMERICA, 4
+      value :SOUTH_AMERICA, 5
+      value :ANTARCTICA, 6
+      value :AUSTRALIA, 7
+    end
+    add_enum "protobuf.Country.TestEnum" do
+      value :UNDEFINED, 0
+      value :TEST1, 1
+      value :TEST2, 2
+      value :TEST3, 3
     end
   end
 end
 
 module Protobuf
   Country = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("protobuf.Country").msgclass
+  Country::Continent = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("protobuf.Country.Continent").msgclass
+  Country::Continent::ContinentName = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("protobuf.Country.Continent.ContinentName").enummodule
+  Country::TestEnum = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("protobuf.Country.TestEnum").enummodule
 end

@@ -43,8 +43,6 @@ country1 = Protobuf::Country.new(
 
 
 
-
-
 encoded1 = Protobuf::Country.encode(country1)
 decoded1 = Protobuf::Country.decode(encoded1)
 transformed_country_1 = Country.new(

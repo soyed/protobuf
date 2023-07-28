@@ -12,4 +12,30 @@ message Country {
   string capital = 5;
   google.protobuf.BoolValue independent = 6;
   google.protobuf.Int64Value established = 7;
+  Continent continent = 8;
+  optional TestEnum test_enum = 9;
+
+
+  message Continent {
+    int64 id = 1;
+    ContinentName name = 2;
+
+    enum ContinentName {
+      UNDEFINED = 0;
+      ASIA = 1;
+      EUROPE = 2;
+      AFRICA = 3;
+      NORTH_AMERICA = 4;
+      SOUTH_AMERICA = 5;
+      ANTARCTICA = 6;
+      AUSTRALIA = 7;
+    }
+  }
+
+  enum TestEnum {
+    UNDEFINED = 0;
+    TEST1 = 1;
+    TEST2 = 2;
+    TEST3 = 3;
+  }
 }
